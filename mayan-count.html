@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="imagetoolbar" content="no">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="keywords" content="mayan numbers, mayan counting, mathematics, mayan language" />
+<title>Mayan Number Counting</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<style>
+      .draggable {
+        width: 60px;
+        height: 60px;
+        padding: 5px;
+        text-align:center;
+        margin: 5px;
+        cursor: pointer;
+        border: 1px solid #000;
+        display: inline-block;
+          vertical-align: middle;
+      }
+      .droppable {
+        width: 115px;
+        height: 115px;
+        padding: 0.5em;
+        margin: 10px;
+        border: 1px dashed #000;
+      }
+      .red-outline { border: 1px solid red; }
+      #answer {
+        font-size:150%;
+      }
+    
+
+      @media (max-width: 768px) {
+        
+      }
+    </style>
+</head>
+</head>
+<body>
+
+	<div class="container">
+		<img src="images/numbers.jpg" alt="" class="img-responsive" />
+		<h1 class="sr-only">Mayan Counting</h1>
+		<p class="sr-only">Addition and Multiplication using only 1s, 5s, and 0/20s.</p>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<p>The Mayans used a base-20 system for calculating large numbers, and that system used a combination of 0s (shell), 1s (dot), and 5s (bar). They also would count vertically, with the next higher block being a 20 fold increase. The first block is face value of dots/bars/shell, the second block would be 20 times its combination of dots and bars. The third block, 20 times 20 times larger.</p>
+				<p>I devised this little game to test your knowledge of mathematics combined with the Mayan method of counting. If you are having difficulty understanding the maths, <a href="http://gwydir.demon.co.uk/jo/numbers/maya/" rel="external" id="explain-link">go here for more in-depth explanation.</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<form enctype="text/plain" title="Mayan Number Counting Game" name="game" id="game">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<h3 class="text-primary">First,</h3>
+					<fieldset>
+						<label>Select your number range</label><br>
+						<label><input type="radio" name="count" class="count" value="2" /> Two (1-99)</label><br>
+						<label><input type="radio" name="count" class="count" value="3" /> Three (100 - 999)</label><br>
+						<label><input type="radio" name="count" class="count" value="4" /> Four (1000 - 9999)</label><br>
+						<label><input type="radio" name="count" class="count" value="5" /> Five (10,000 - 99,999)</label><br>
+					</fieldset>
+					<p><small><strong>Note:</strong> You can click any button again to get a new number</small></p>
+					
+					<div id="system-answer"></div>
+				</div>
+				<div class="col-md-3 col-sm-6" id="drag-blocks">
+					<h3 class="text-primary">Second,</h3>
+					<p>drag as many as the following images to the right</p>
+					<ul style="list-style-type:none; margin-left:0;">
+						<li class="draggable" value="1"><img src="images/dot.gif" class="imgone" alt="One" /></li>
+						<li class="draggable" value="5"><img src="images/line.gif" class="imgfive" alt="Five" /></li>
+						<li class="draggable" value="20"><img src="images/shell.gif" class="imgzero" alt="Zero" /></li>
+					</ul>
+					<div>
+						<a href="javascript://" id="reset-answers">Clear Your Answers</a>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6" id="drop-blocks">
+					<h3 class="text-primary">Third,</h3>
+					<p>drop your images into the selected boxes</p>
+					<div class="droppable answer ui-widget-header" id="baselevel-4"></div>
+					<div class="droppable answer ui-widget-header" id="baselevel-3"></div>
+					<div class="droppable answer ui-widget-header" id="baselevel-2"></div>
+					<div class="droppable answer ui-widget-header" id="baselevel-1"></div>
+					<div class="droppable answer ui-widget-header" id="baselevel-0"></div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<h3 class="text-primary">Last,</h3>
+					<p>Submit your answer when you feel ready.</p>
+					<button type="button" class="btn btn-primary" name="tally" id="tally">Submit Answer</button>
+					<div id="user-answer"></div>
+					<div id="user-answer-message"></div>
+
+					<p>If your answer is incorrect, you may continue to add (but not remove) values to your answer. Or you can reset your answer blocks entirely.</p>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="js/compute.js"></script>
+	<script src="js/functions.js"></script>
+	<script>
+		"use strict";
+		$(function(j) {
+			j('a[rel="external"]').click(function() {
+				window.open($(this).attr('href'));
+				return false;
+			});
+		});
+	</script>
+
+</body>
+</html>

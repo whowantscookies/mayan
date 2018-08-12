@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Untitled Document</title>
+	<link href="css/styles.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/compute.js"></script>
+	<style>
+		.droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; border: 1px dashed #000; }
+		.draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px; cursor: hand; cursor: pointer; border: 1px solid #000;}
+	</style>
+
+	<script>
+	$(function() {
+		$( ".draggable" ).draggable({ revert: "invalid" });
+
+		$( ".droppable" ).droppable({
+			activeClass: "ui-state-hover",
+			hoverClass: "ui-state-active",
+			drop: function( event, ui ) {
+
+				var value = $(this).attr('amt');
+				//alert(value);
+
+				var targetElem = $(this).attr("id");
+
+				$( this )
+					.addClass( "ui-state-highlight" )
+					.find( "p" )
+						.html( "Dropped! inside " + targetElem );
+
+						//alert(targetElem);
+
+			}
+		});
+		
+	});
+
+	</script>
+</head>
+
+<body>
+
+<div id="outp"></div>
+
+<form name="conv">
+	<input TYPE=TEXT NAME="numb" id="number" SIZE=6 VALUE=0>
+  	<input TYPE=BUTTON VALUE="Show number" id="docalc">
+</form>
+
+<!--<div class="draggable">
+		<p>aaaa</p>
+        <div class="val">12</div>
+	</div>
+    
+    <div class="draggable">
+		<p>bbbb</p>
+        <div class="val">12</div>
+	</div>
+
+	<div class="droppable ui-widget-header" amt="5" id="element 1">
+		<p>Drop me here</p>
+	</div>
+
+	<div class="droppable ui-widget-header" amt="10" id="element 2">
+		<p>Drop me here</p>
+	</div>
+
+	<div class="droppable ui-widget-header" amt="15" id="element 3">
+		<p>Drop me here</p>
+	</div>-->
+
+</body>
+</html>
